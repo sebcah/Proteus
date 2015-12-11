@@ -1,0 +1,866 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Thu Mar 20 18:13:25 2014
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F628A
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	text80,local,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	maintext,global,class=CODE,delta=2
+     9                           	psect	text81,local,class=CODE,delta=2
+    10                           	psect	text82,local,class=CODE,delta=2
+    11                           	psect	text83,local,class=CODE,delta=2
+    12                           	psect	text84,local,class=CODE,delta=2
+    13                           	psect	text85,local,class=CODE,delta=2
+    14                           	psect	text86,local,class=CODE,delta=2
+    15                           	psect	text87,local,class=CODE,delta=2
+    16                           	psect	pa_nodes,global,class=CODE,delta=2
+    17                           	dabs	1,0x7E,2
+    18  000A                     	;#
+    19                           
+    20                           	psect	config
+    21  2007  FF62               	dw	65378	;#
+    22                           
+    23                           	psect	text80
+    24  0000                     __ptext80:	
+    25  002C                     _RA4	set	44
+    26  0030                     _RB0	set	48
+    27  042C                     _TRISA4	set	1068
+    28  0430                     _TRISB0	set	1072
+    29                           
+    30                           	psect	cinit
+    31  0739                     start_initialization:	
+    32  0739                     end_of_initialization:	
+    33                           ;End of C runtime variable initialization code
+    34                           
+    35  0739  0183               	clrf	3
+    36  073A  2F42               	ljmp	_main	;jump to C main() function
+    37                           
+    38                           	psect	cstackCOMMON
+    39  0070                     __pcstackCOMMON:	
+    40  0070                     ?_InitI2C:	
+    41  0070                     ??_InitI2C:	
+    42                           ; 0 bytes @ 0x0
+    43                           
+    44  0070                     ?_I2C_Start:	
+    45                           ; 0 bytes @ 0x0
+    46                           
+    47  0070                     ??_I2C_Start:	
+    48                           ; 0 bytes @ 0x0
+    49                           
+    50  0070                     ?_I2C_Stop:	
+    51                           ; 0 bytes @ 0x0
+    52                           
+    53  0070                     ??_I2C_Stop:	
+    54                           ; 0 bytes @ 0x0
+    55                           
+    56  0070                     ?_I2C_Send_ACK:	
+    57                           ; 0 bytes @ 0x0
+    58                           
+    59  0070                     ??_I2C_Send_ACK:	
+    60                           ; 0 bytes @ 0x0
+    61                           
+    62  0070                     ?_I2C_Write_Byte:	
+    63                           ; 0 bytes @ 0x0
+    64                           
+    65  0070                     ??_I2C_Write_Byte:	
+    66                           ; 1 bit 
+    67                           
+    68  0070                     ??_I2C_Read_Byte:	
+    69                           ; 0 bytes @ 0x0
+    70                           
+    71  0070                     ?_main:	
+    72                           ; 0 bytes @ 0x0
+    73                           
+    74  0070                     ?_I2C_Read_Byte:	
+    75                           ; 0 bytes @ 0x0
+    76                           
+    77                           
+    78                           ; 1 bytes @ 0x0
+    79  0070                     	ds	1
+    80  0071                     I2C_Write_Byte@Byte:	
+    81  0071                     I2C_Read_Byte@RxData:	
+    82                           ; 1 bytes @ 0x1
+    83                           
+    84                           
+    85                           ; 1 bytes @ 0x1
+    86  0071                     	ds	1
+    87  0072                     I2C_Write_Byte@i:	
+    88  0072                     I2C_Read_Byte@i:	
+    89                           ; 1 bytes @ 0x2
+    90                           
+    91                           
+    92                           ; 1 bytes @ 0x2
+    93  0072                     	ds	1
+    94  0073                     ??_main:	
+    95                           
+    96                           	psect	maintext
+    97  0742                     __pmaintext:	
+    98                           ; 0 bytes @ 0x3
+    99 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+   100 ;;Auto spaces:   Size  Autos    Used
+   101 ;; COMMON          14      3       3
+   102 ;; BANK0           80      0       0
+   103 ;; BANK1           80      0       0
+   104 ;; BANK2           48      0       0
+   105 ;;
+   106 ;; Pointer list with targets:
+   107 ;;
+   108 ;; Critical Paths under _main in COMMON
+   109 ;;
+   110 ;;   _main->_I2C_Write_Byte
+   111 ;;   _main->_I2C_Read_Byte
+   112 ;;
+   113 ;; Critical Paths under _main in BANK0
+   114 ;;
+   115 ;;   None.
+   116 ;;
+   117 ;; Critical Paths under _main in BANK1
+   118 ;;
+   119 ;;   None.
+   120 ;;
+   121 ;; Critical Paths under _main in BANK2
+   122 ;;
+   123 ;;   None.
+   124 ;;
+   125 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   126 ;;
+   127 ;;
+   128 ;;Call Graph Tables:
+   129 ;;
+   130 ;; ---------------------------------------------------------------------------------
+   131 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   132 ;; ---------------------------------------------------------------------------------
+   133 ;; (0) _main                                                 1     1      0     120
+   134 ;;                            _InitI2C
+   135 ;;                          _I2C_Start
+   136 ;;                     _I2C_Write_Byte
+   137 ;;                      _I2C_Read_Byte
+   138 ;;                       _I2C_Send_ACK
+   139 ;;                           _I2C_Stop
+   140 ;; ---------------------------------------------------------------------------------
+   141 ;; (1) _I2C_Read_Byte                                        3     3      0      60
+   142 ;;                                              0 COMMON     3     3      0
+   143 ;; ---------------------------------------------------------------------------------
+   144 ;; (1) _I2C_Write_Byte                                       3     3      0      60
+   145 ;;                                              0 COMMON     3     3      0
+   146 ;; ---------------------------------------------------------------------------------
+   147 ;; (1) _I2C_Send_ACK                                         1     1      0       0
+   148 ;;                                              0 COMMON     1     1      0
+   149 ;; ---------------------------------------------------------------------------------
+   150 ;; (1) _I2C_Stop                                             1     1      0       0
+   151 ;;                                              0 COMMON     1     1      0
+   152 ;; ---------------------------------------------------------------------------------
+   153 ;; (1) _I2C_Start                                            1     1      0       0
+   154 ;;                                              0 COMMON     1     1      0
+   155 ;; ---------------------------------------------------------------------------------
+   156 ;; (1) _InitI2C                                              0     0      0       0
+   157 ;; ---------------------------------------------------------------------------------
+   158 ;; Estimated maximum stack depth 1
+   159 ;; ---------------------------------------------------------------------------------
+   160 ;; Call Graph Graphs:
+   161 ;; _main (ROOT)
+   162 ;;   _InitI2C
+   163 ;;   _I2C_Start
+   164 ;;   _I2C_Write_Byte
+   165 ;;   _I2C_Read_Byte
+   166 ;;   _I2C_Send_ACK
+   167 ;;   _I2C_Stop
+   168 ;;
+   169 ;; Address spaces:
+   170 ;;Name               Size   Autos  Total    Cost      Usage
+   171 ;;BITCOMMON            E      0       0       0        0.0%
+   172 ;;EEDATA              80      0       0       0        0.0%
+   173 ;;NULL                 0      0       0       0        0.0%
+   174 ;;CODE                 0      0       0       0        0.0%
+   175 ;;COMMON               E      3       3       1       21.4%
+   176 ;;BITSFR0              0      0       0       1        0.0%
+   177 ;;SFR0                 0      0       0       1        0.0%
+   178 ;;BITSFR1              0      0       0       2        0.0%
+   179 ;;SFR1                 0      0       0       2        0.0%
+   180 ;;STACK                0      0       1       2        0.0%
+   181 ;;BANK0               50      0       0       3        0.0%
+   182 ;;BITSFR3              0      0       0       4        0.0%
+   183 ;;SFR3                 0      0       0       4        0.0%
+   184 ;;ABS                  0      0       0       4        0.0%
+   185 ;;BITBANK0            50      0       0       5        0.0%
+   186 ;;BITSFR2              0      0       0       5        0.0%
+   187 ;;SFR2                 0      0       0       5        0.0%
+   188 ;;BITBANK1            50      0       0       6        0.0%
+   189 ;;BANK1               50      0       0       7        0.0%
+   190 ;;BITBANK2            30      0       0       8        0.0%
+   191 ;;BANK2               30      0       0       9        0.0%
+   192 ;;DATA                 0      0       0      10        0.0%
+   193                           
+   194                           
+   195 ;; *************** function _main *****************
+   196 ;; Defined at:
+   197 ;;		line 14 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\Main.c"
+   198 ;; Parameters:    Size  Location     Type
+   199 ;;		None
+   200 ;; Auto vars:     Size  Location     Type
+   201 ;;  RxByte          1    0        unsigned char 
+   202 ;; Return value:  Size  Location     Type
+   203 ;;		None               void
+   204 ;; Registers used:
+   205 ;;		wreg, status,2, status,0, pclath, cstack
+   206 ;; Tracked objects:
+   207 ;;		On entry : 17F/0
+   208 ;;		On exit  : 0/0
+   209 ;;		Unchanged: 0/0
+   210 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   211 ;;      Params:         0       0       0       0
+   212 ;;      Locals:         0       0       0       0
+   213 ;;      Temps:          0       0       0       0
+   214 ;;      Totals:         0       0       0       0
+   215 ;;Total ram usage:        0 bytes
+   216 ;; Hardware stack levels required when called:    1
+   217 ;; This function calls:
+   218 ;;		_InitI2C
+   219 ;;		_I2C_Start
+   220 ;;		_I2C_Write_Byte
+   221 ;;		_I2C_Read_Byte
+   222 ;;		_I2C_Send_ACK
+   223 ;;		_I2C_Stop
+   224 ;; This function is called by:
+   225 ;;		Startup code after reset
+   226 ;; This function uses a non-reentrant model
+   227 ;;
+   228  0742                     _main:	
+   229                           
+   230                           ;Main.c: 17: InitI2C();
+   231                           
+   232                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   233  0742  273B               	fcall	_InitI2C
+   234                           
+   235                           ;Main.c: 19: I2C_Start();
+   236  0743  274A               	fcall	_I2C_Start
+   237                           
+   238                           ;Main.c: 20: I2C_Write_Byte(0xA0);
+   239  0744  30A0               	movlw	160
+   240  0745  27C3               	fcall	_I2C_Write_Byte
+   241                           
+   242                           ;Main.c: 21: RxByte = I2C_Read_Byte();
+   243  0746  2794               	fcall	_I2C_Read_Byte
+   244                           
+   245                           ;Main.c: 22: I2C_Send_ACK();
+   246  0747  275B               	fcall	_I2C_Send_ACK
+   247                           
+   248                           ;Main.c: 23: I2C_Stop();
+   249  0748  2773               	fcall	_I2C_Stop
+   250  0749                     l796:	
+   251                           ;Main.c: 26: {
+   252                           
+   253  0749  2F49               	goto	l796
+   254  074A                     __end_of_main:	
+   255                           
+   256                           	psect	text81
+   257  0794                     __ptext81:	
+   258 ;; =============== function _main ends ============
+   259                           
+   260                           
+   261 ;; *************** function _I2C_Read_Byte *****************
+   262 ;; Defined at:
+   263 ;;		line 128 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   264 ;; Parameters:    Size  Location     Type
+   265 ;;		None
+   266 ;; Auto vars:     Size  Location     Type
+   267 ;;  i               1    2[COMMON] unsigned char 
+   268 ;;  RxData          1    1[COMMON] unsigned char 
+   269 ;; Return value:  Size  Location     Type
+   270 ;;                  1    wreg      unsigned char 
+   271 ;; Registers used:
+   272 ;;		wreg, status,2, status,0
+   273 ;; Tracked objects:
+   274 ;;		On entry : 0/0
+   275 ;;		On exit  : 0/0
+   276 ;;		Unchanged: 0/0
+   277 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   278 ;;      Params:         0       0       0       0
+   279 ;;      Locals:         2       0       0       0
+   280 ;;      Temps:          1       0       0       0
+   281 ;;      Totals:         3       0       0       0
+   282 ;;Total ram usage:        3 bytes
+   283 ;; Hardware stack levels used:    1
+   284 ;; This function calls:
+   285 ;;		Nothing
+   286 ;; This function is called by:
+   287 ;;		_main
+   288 ;; This function uses a non-reentrant model
+   289 ;;
+   290  0794                     _I2C_Read_Byte:	
+   291                           
+   292                           ;I2C.c: 129: unsigned char i, RxData = 0;
+   293                           
+   294                           ; Regs used in _I2C_Read_Byte: [wreg+status,2+status,0]
+   295  0794  01F1               	clrf	I2C_Read_Byte@RxData
+   296                           
+   297                           ;I2C.c: 131: for(i=0;i<8;i++)
+   298  0795  01F2               	clrf	I2C_Read_Byte@i
+   299  0796                     l404:	
+   300  0796  3053               	movlw	83
+   301                           
+   302                           ;I2C.c: 132: {
+   303                           ;I2C.c: 133: TRISB0 = 0;
+   304  0797  1683               	bsf	3,5	;RP0=1, select bank1
+   305  0798  1303               	bcf	3,6	;RP1=0, select bank1
+   306  0799  1006               	bcf	6,0
+   307                           
+   308                           ;I2C.c: 134: TRISA4 = 1;
+   309  079A  1605               	bsf	5,4
+   310                           
+   311                           ;I2C.c: 135: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   312  079B  00F0               	movwf	??_I2C_Read_Byte
+   313  079C                     u67:	
+   314  079C  0BF0               	decfsz	??_I2C_Read_Byte,f
+   315  079D  2F9C               	goto	u67
+   316  079E  3029               	movlw	41
+   317                           
+   318                           ;I2C.c: 136: TRISB0 = 1;
+   319  079F  1683               	bsf	3,5	;RP0=1, select bank1
+   320  07A0  1303               	bcf	3,6	;RP1=0, select bank1
+   321  07A1  1406               	bsf	6,0
+   322                           
+   323                           ;I2C.c: 137: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   324  07A2  00F0               	movwf	??_I2C_Read_Byte
+   325  07A3                     u77:	
+   326  07A3  0BF0               	decfsz	??_I2C_Read_Byte,f
+   327  07A4  2FA3               	goto	u77
+   328  07A5  0064               	clrwdt
+   329                           
+   330                           ;I2C.c: 138: RxData = RxData|(RA4<<(7-i));
+   331  07A6  3000               	movlw	0
+   332  07A7  1283               	bcf	3,5	;RP0=0, select bank0
+   333  07A8  1303               	bcf	3,6	;RP1=0, select bank0
+   334  07A9  1A05               	btfsc	5,4
+   335  07AA  3001               	movlw	1
+   336  07AB  00F0               	movwf	??_I2C_Read_Byte
+   337  07AC  0872               	movf	I2C_Read_Byte@i,w
+   338  07AD  3C07               	sublw	7
+   339  07AE  3E01               	addlw	1
+   340  07AF  2FB2               	goto	u44
+   341  07B0                     u45:	
+   342  07B0  1003               	clrc
+   343  07B1  0DF0               	rlf	??_I2C_Read_Byte,f
+   344  07B2                     u44:	
+   345  07B2  3EFF               	addlw	-1
+   346  07B3  1D03               	skipz
+   347  07B4  2FB0               	goto	u45
+   348  07B5  0870               	movf	??_I2C_Read_Byte,w
+   349  07B6  04F1               	iorwf	I2C_Read_Byte@RxData,f
+   350                           
+   351                           ;I2C.c: 139: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   352  07B7  3029               	movlw	41
+   353  07B8  00F0               	movwf	??_I2C_Read_Byte
+   354  07B9                     u87:	
+   355  07B9  0BF0               	decfsz	??_I2C_Read_Byte,f
+   356  07BA  2FB9               	goto	u87
+   357  07BB  0064               	clrwdt
+   358  07BC  3008               	movlw	8
+   359  07BD  0AF2               	incf	I2C_Read_Byte@i,f
+   360  07BE  0272               	subwf	I2C_Read_Byte@i,w
+   361  07BF  1C03               	skipc
+   362  07C0  2F96               	goto	l404
+   363                           
+   364                           ;I2C.c: 140: }
+   365                           ;I2C.c: 142: return RxData;
+   366  07C1  0871               	movf	I2C_Read_Byte@RxData,w
+   367  07C2  0008               	return
+   368  07C3                     __end_of_I2C_Read_Byte:	
+   369                           
+   370                           	psect	text82
+   371  07C3                     __ptext82:	
+   372 ;; =============== function _I2C_Read_Byte ends ============
+   373                           
+   374                           
+   375 ;; *************** function _I2C_Write_Byte *****************
+   376 ;; Defined at:
+   377 ;;		line 95 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   378 ;; Parameters:    Size  Location     Type
+   379 ;;  Byte            1    wreg     unsigned char 
+   380 ;; Auto vars:     Size  Location     Type
+   381 ;;  Byte            1    1[COMMON] unsigned char 
+   382 ;;  i               1    2[COMMON] unsigned char 
+   383 ;; Return value:  Size  Location     Type
+   384 ;;		None               void
+   385 ;; Registers used:
+   386 ;;		wreg, status,2, status,0
+   387 ;; Tracked objects:
+   388 ;;		On entry : 0/0
+   389 ;;		On exit  : 0/0
+   390 ;;		Unchanged: 0/0
+   391 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   392 ;;      Params:         0       0       0       0
+   393 ;;      Locals:         2       0       0       0
+   394 ;;      Temps:          1       0       0       0
+   395 ;;      Totals:         3       0       0       0
+   396 ;;Total ram usage:        3 bytes
+   397 ;; Hardware stack levels used:    1
+   398 ;; This function calls:
+   399 ;;		Nothing
+   400 ;; This function is called by:
+   401 ;;		_main
+   402 ;; This function uses a non-reentrant model
+   403 ;;
+   404  07C3                     _I2C_Write_Byte:	
+   405                           
+   406                           ; Regs used in _I2C_Write_Byte: [wreg+status,2+status,0]
+   407                           ;I2C_Write_Byte@Byte stored from wreg
+   408  07C3  00F1               	movwf	I2C_Write_Byte@Byte
+   409                           
+   410                           ;I2C.c: 96: unsigned char i;
+   411                           ;I2C.c: 98: for(i=0;i<8;i++)
+   412  07C4  01F2               	clrf	I2C_Write_Byte@i
+   413  07C5                     l397:	
+   414  07C5  3029               	movlw	41
+   415                           
+   416                           ;I2C.c: 99: {
+   417                           ;I2C.c: 100: TRISB0 = 0;
+   418  07C6  1683               	bsf	3,5	;RP0=1, select bank1
+   419  07C7  1303               	bcf	3,6	;RP1=0, select bank1
+   420  07C8  1006               	bcf	6,0
+   421                           
+   422                           ;I2C.c: 102: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   423  07C9  00F0               	movwf	??_I2C_Write_Byte
+   424  07CA                     u97:	
+   425  07CA  0BF0               	decfsz	??_I2C_Write_Byte,f
+   426  07CB  2FCA               	goto	u97
+   427  07CC  0064               	clrwdt
+   428                           
+   429                           ;I2C.c: 105: if((Byte<<i)&0x80)
+   430  07CD  0871               	movf	I2C_Write_Byte@Byte,w
+   431  07CE  00F0               	movwf	??_I2C_Write_Byte
+   432  07CF  0A72               	incf	I2C_Write_Byte@i,w
+   433  07D0  2FD3               	goto	u14
+   434  07D1                     u15:	
+   435  07D1  1003               	clrc
+   436  07D2  0DF0               	rlf	??_I2C_Write_Byte,f
+   437  07D3                     u14:	
+   438  07D3  3EFF               	addlw	-1
+   439  07D4  1D03               	skipz
+   440  07D5  2FD1               	goto	u15
+   441  07D6  1FF0               	btfss	??_I2C_Write_Byte,7
+   442  07D7  2FDC               	goto	l399
+   443                           
+   444                           ;I2C.c: 106: TRISA4 = 1;
+   445  07D8  1683               	bsf	3,5	;RP0=1, select bank1
+   446  07D9  1303               	bcf	3,6	;RP1=0, select bank1
+   447  07DA  1605               	bsf	5,4
+   448  07DB  2FDF               	goto	l1623
+   449  07DC                     l399:	
+   450                           
+   451                           ;I2C.c: 107: else
+   452                           ;I2C.c: 108: TRISA4 = 0;
+   453  07DC  1683               	bsf	3,5	;RP0=1, select bank1
+   454  07DD  1303               	bcf	3,6	;RP1=0, select bank1
+   455  07DE  1205               	bcf	5,4
+   456  07DF                     l1623:	
+   457                           
+   458                           ;I2C.c: 110: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   459  07DF  3029               	movlw	41
+   460  07E0  00F0               	movwf	??_I2C_Write_Byte
+   461  07E1                     u107:	
+   462  07E1  0BF0               	decfsz	??_I2C_Write_Byte,f
+   463  07E2  2FE1               	goto	u107
+   464  07E3  0064               	clrwdt
+   465  07E4  3053               	movlw	83
+   466                           
+   467                           ;I2C.c: 111: TRISB0 = 1;
+   468  07E5  1683               	bsf	3,5	;RP0=1, select bank1
+   469  07E6  1303               	bcf	3,6	;RP1=0, select bank1
+   470  07E7  1406               	bsf	6,0
+   471                           
+   472                           ;I2C.c: 112: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   473  07E8  00F0               	movwf	??_I2C_Write_Byte
+   474  07E9                     u117:	
+   475  07E9  0BF0               	decfsz	??_I2C_Write_Byte,f
+   476  07EA  2FE9               	goto	u117
+   477  07EB  3008               	movlw	8
+   478  07EC  0AF2               	incf	I2C_Write_Byte@i,f
+   479  07ED  0272               	subwf	I2C_Write_Byte@i,w
+   480  07EE  1C03               	skipc
+   481  07EF  2FC5               	goto	l397
+   482  07F0  3053               	movlw	83
+   483                           
+   484                           ;I2C.c: 113: }
+   485                           ;I2C.c: 116: TRISB0 = 0;
+   486  07F1  1683               	bsf	3,5	;RP0=1, select bank1
+   487  07F2  1303               	bcf	3,6	;RP1=0, select bank1
+   488  07F3  1006               	bcf	6,0
+   489                           
+   490                           ;I2C.c: 117: TRISA4 = 1;
+   491  07F4  1605               	bsf	5,4
+   492                           
+   493                           ;I2C.c: 118: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   494  07F5  00F0               	movwf	??_I2C_Write_Byte
+   495  07F6                     u127:	
+   496  07F6  0BF0               	decfsz	??_I2C_Write_Byte,f
+   497  07F7  2FF6               	goto	u127
+   498  07F8  3053               	movlw	83
+   499                           
+   500                           ;I2C.c: 119: TRISB0 = 1;
+   501  07F9  1683               	bsf	3,5	;RP0=1, select bank1
+   502  07FA  1303               	bcf	3,6	;RP1=0, select bank1
+   503  07FB  1406               	bsf	6,0
+   504                           
+   505                           ;I2C.c: 120: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   506  07FC  00F0               	movwf	??_I2C_Write_Byte
+   507  07FD                     u137:	
+   508  07FD  0BF0               	decfsz	??_I2C_Write_Byte,f
+   509  07FE  2FFD               	goto	u137
+   510                           
+   511                           ;I2C.c: 122: return RA4;
+   512                           ;	Return value of _I2C_Write_Byte is never used
+   513  07FF  0008               	return
+   514  0800                     __end_of_I2C_Write_Byte:	
+   515                           
+   516                           	psect	text83
+   517  075B                     __ptext83:	
+   518 ;; =============== function _I2C_Write_Byte ends ============
+   519                           
+   520                           
+   521 ;; *************** function _I2C_Send_ACK *****************
+   522 ;; Defined at:
+   523 ;;		line 69 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   524 ;; Parameters:    Size  Location     Type
+   525 ;;		None
+   526 ;; Auto vars:     Size  Location     Type
+   527 ;;		None
+   528 ;; Return value:  Size  Location     Type
+   529 ;;		None               void
+   530 ;; Registers used:
+   531 ;;		wreg
+   532 ;; Tracked objects:
+   533 ;;		On entry : 0/0
+   534 ;;		On exit  : 0/0
+   535 ;;		Unchanged: 0/0
+   536 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   537 ;;      Params:         0       0       0       0
+   538 ;;      Locals:         0       0       0       0
+   539 ;;      Temps:          1       0       0       0
+   540 ;;      Totals:         1       0       0       0
+   541 ;;Total ram usage:        1 bytes
+   542 ;; Hardware stack levels used:    1
+   543 ;; This function calls:
+   544 ;;		Nothing
+   545 ;; This function is called by:
+   546 ;;		_main
+   547 ;; This function uses a non-reentrant model
+   548 ;;
+   549  075B                     _I2C_Send_ACK:	
+   550  075B  3029               	movlw	41
+   551                           
+   552                           ;I2C.c: 70: TRISB0 = 0;
+   553                           
+   554                           ; Regs used in _I2C_Send_ACK: [wreg]
+   555  075C  1683               	bsf	3,5	;RP0=1, select bank1
+   556  075D  1303               	bcf	3,6	;RP1=0, select bank1
+   557  075E  1006               	bcf	6,0
+   558                           
+   559                           ;I2C.c: 71: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   560  075F  00F0               	movwf	??_I2C_Send_ACK
+   561  0760                     u147:	
+   562  0760  0BF0               	decfsz	??_I2C_Send_ACK,f
+   563  0761  2F60               	goto	u147
+   564  0762  0064               	clrwdt
+   565  0763  3029               	movlw	41
+   566                           
+   567                           ;I2C.c: 73: TRISA4 = 0;
+   568  0764  1683               	bsf	3,5	;RP0=1, select bank1
+   569  0765  1303               	bcf	3,6	;RP1=0, select bank1
+   570  0766  1205               	bcf	5,4
+   571                           
+   572                           ;I2C.c: 74: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   573  0767  00F0               	movwf	??_I2C_Send_ACK
+   574  0768                     u157:	
+   575  0768  0BF0               	decfsz	??_I2C_Send_ACK,f
+   576  0769  2F68               	goto	u157
+   577  076A  0064               	clrwdt
+   578  076B  3053               	movlw	83
+   579                           
+   580                           ;I2C.c: 75: TRISB0 = 1;
+   581  076C  1683               	bsf	3,5	;RP0=1, select bank1
+   582  076D  1303               	bcf	3,6	;RP1=0, select bank1
+   583  076E  1406               	bsf	6,0
+   584                           
+   585                           ;I2C.c: 76: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   586  076F  00F0               	movwf	??_I2C_Send_ACK
+   587  0770                     u167:	
+   588  0770  0BF0               	decfsz	??_I2C_Send_ACK,f
+   589  0771  2F70               	goto	u167
+   590  0772  0008               	return
+   591  0773                     __end_of_I2C_Send_ACK:	
+   592                           
+   593                           	psect	text84
+   594  0773                     __ptext84:	
+   595 ;; =============== function _I2C_Send_ACK ends ============
+   596                           
+   597                           
+   598 ;; *************** function _I2C_Stop *****************
+   599 ;; Defined at:
+   600 ;;		line 51 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   601 ;; Parameters:    Size  Location     Type
+   602 ;;		None
+   603 ;; Auto vars:     Size  Location     Type
+   604 ;;		None
+   605 ;; Return value:  Size  Location     Type
+   606 ;;		None               void
+   607 ;; Registers used:
+   608 ;;		wreg
+   609 ;; Tracked objects:
+   610 ;;		On entry : 0/0
+   611 ;;		On exit  : 0/0
+   612 ;;		Unchanged: 0/0
+   613 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   614 ;;      Params:         0       0       0       0
+   615 ;;      Locals:         0       0       0       0
+   616 ;;      Temps:          1       0       0       0
+   617 ;;      Totals:         1       0       0       0
+   618 ;;Total ram usage:        1 bytes
+   619 ;; Hardware stack levels used:    1
+   620 ;; This function calls:
+   621 ;;		Nothing
+   622 ;; This function is called by:
+   623 ;;		_main
+   624 ;; This function uses a non-reentrant model
+   625 ;;
+   626  0773                     _I2C_Stop:	
+   627  0773  3029               	movlw	41
+   628                           
+   629                           ;I2C.c: 52: TRISB0 = 0;
+   630                           
+   631                           ; Regs used in _I2C_Stop: [wreg]
+   632  0774  1683               	bsf	3,5	;RP0=1, select bank1
+   633  0775  1303               	bcf	3,6	;RP1=0, select bank1
+   634  0776  1006               	bcf	6,0
+   635                           
+   636                           ;I2C.c: 54: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   637  0777  00F0               	movwf	??_I2C_Stop
+   638  0778                     u177:	
+   639  0778  0BF0               	decfsz	??_I2C_Stop,f
+   640  0779  2F78               	goto	u177
+   641  077A  0064               	clrwdt
+   642  077B  3029               	movlw	41
+   643                           
+   644                           ;I2C.c: 56: TRISA4 = 0;
+   645  077C  1683               	bsf	3,5	;RP0=1, select bank1
+   646  077D  1303               	bcf	3,6	;RP1=0, select bank1
+   647  077E  1205               	bcf	5,4
+   648                           
+   649                           ;I2C.c: 58: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   650  077F  00F0               	movwf	??_I2C_Stop
+   651  0780                     u187:	
+   652  0780  0BF0               	decfsz	??_I2C_Stop,f
+   653  0781  2F80               	goto	u187
+   654  0782  0064               	clrwdt
+   655  0783  3029               	movlw	41
+   656                           
+   657                           ;I2C.c: 59: TRISB0 = 1;
+   658  0784  1683               	bsf	3,5	;RP0=1, select bank1
+   659  0785  1303               	bcf	3,6	;RP1=0, select bank1
+   660  0786  1406               	bsf	6,0
+   661                           
+   662                           ;I2C.c: 60: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   663  0787  00F0               	movwf	??_I2C_Stop
+   664  0788                     u197:	
+   665  0788  0BF0               	decfsz	??_I2C_Stop,f
+   666  0789  2F88               	goto	u197
+   667  078A  0064               	clrwdt
+   668  078B  3029               	movlw	41
+   669                           
+   670                           ;I2C.c: 61: TRISA4 = 1;
+   671  078C  1683               	bsf	3,5	;RP0=1, select bank1
+   672  078D  1303               	bcf	3,6	;RP1=0, select bank1
+   673  078E  1605               	bsf	5,4
+   674                           
+   675                           ;I2C.c: 62: _delay((unsigned long)((500/10/2)*(20000000/4000000.0)));
+   676  078F  00F0               	movwf	??_I2C_Stop
+   677  0790                     u207:	
+   678  0790  0BF0               	decfsz	??_I2C_Stop,f
+   679  0791  2F90               	goto	u207
+   680  0792  0064               	clrwdt
+   681  0793  0008               	return
+   682  0794                     __end_of_I2C_Stop:	
+   683                           
+   684                           	psect	text85
+   685  074A                     __ptext85:	
+   686 ;; =============== function _I2C_Stop ends ============
+   687                           
+   688                           
+   689 ;; *************** function _I2C_Start *****************
+   690 ;; Defined at:
+   691 ;;		line 20 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   692 ;; Parameters:    Size  Location     Type
+   693 ;;		None
+   694 ;; Auto vars:     Size  Location     Type
+   695 ;;		None
+   696 ;; Return value:  Size  Location     Type
+   697 ;;		None               void
+   698 ;; Registers used:
+   699 ;;		wreg
+   700 ;; Tracked objects:
+   701 ;;		On entry : 17F/0
+   702 ;;		On exit  : 0/0
+   703 ;;		Unchanged: 0/0
+   704 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   705 ;;      Params:         0       0       0       0
+   706 ;;      Locals:         0       0       0       0
+   707 ;;      Temps:          1       0       0       0
+   708 ;;      Totals:         1       0       0       0
+   709 ;;Total ram usage:        1 bytes
+   710 ;; Hardware stack levels used:    1
+   711 ;; This function calls:
+   712 ;;		Nothing
+   713 ;; This function is called by:
+   714 ;;		_main
+   715 ;; This function uses a non-reentrant model
+   716 ;;
+   717  074A                     _I2C_Start:	
+   718  074A  3053               	movlw	83
+   719                           
+   720                           ;I2C.c: 21: RA4 = 0;
+   721                           
+   722                           ; Regs used in _I2C_Start: [wreg]
+   723  074B  1205               	bcf	5,4
+   724                           
+   725                           ;I2C.c: 22: RB0 = 0;
+   726  074C  1006               	bcf	6,0
+   727                           
+   728                           ;I2C.c: 24: TRISB0 = 1;
+   729  074D  1683               	bsf	3,5	;RP0=1, select bank1
+   730  074E  1406               	bsf	6,0
+   731                           
+   732                           ;I2C.c: 25: TRISA4 = 1;
+   733  074F  1605               	bsf	5,4
+   734                           
+   735                           ;I2C.c: 26: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   736  0750  00F0               	movwf	??_I2C_Start
+   737  0751                     u217:	
+   738  0751  0BF0               	decfsz	??_I2C_Start,f
+   739  0752  2F51               	goto	u217
+   740  0753  3053               	movlw	83
+   741                           
+   742                           ;I2C.c: 27: TRISA4 = 0;
+   743  0754  1683               	bsf	3,5	;RP0=1, select bank1
+   744  0755  1303               	bcf	3,6	;RP1=0, select bank1
+   745  0756  1205               	bcf	5,4
+   746                           
+   747                           ;I2C.c: 28: _delay((unsigned long)((500/10)*(20000000/4000000.0)));
+   748  0757  00F0               	movwf	??_I2C_Start
+   749  0758                     u227:	
+   750  0758  0BF0               	decfsz	??_I2C_Start,f
+   751  0759  2F58               	goto	u227
+   752  075A  0008               	return
+   753  075B                     __end_of_I2C_Start:	
+   754                           
+   755                           	psect	text86
+   756  073B                     __ptext86:	
+   757 ;; =============== function _I2C_Start ends ============
+   758                           
+   759                           
+   760 ;; *************** function _InitI2C *****************
+   761 ;; Defined at:
+   762 ;;		line 7 in file "C:\Users\macbookpro\Dropbox\Blog Posts\PIC16F628A I2C Code\Code\I2C.c"
+   763 ;; Parameters:    Size  Location     Type
+   764 ;;		None
+   765 ;; Auto vars:     Size  Location     Type
+   766 ;;		None
+   767 ;; Return value:  Size  Location     Type
+   768 ;;		None               void
+   769 ;; Registers used:
+   770 ;;		None
+   771 ;; Tracked objects:
+   772 ;;		On entry : 17F/0
+   773 ;;		On exit  : 17F/0
+   774 ;;		Unchanged: FFE80/0
+   775 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   776 ;;      Params:         0       0       0       0
+   777 ;;      Locals:         0       0       0       0
+   778 ;;      Temps:          0       0       0       0
+   779 ;;      Totals:         0       0       0       0
+   780 ;;Total ram usage:        0 bytes
+   781 ;; Hardware stack levels used:    1
+   782 ;; This function calls:
+   783 ;;		Nothing
+   784 ;; This function is called by:
+   785 ;;		_main
+   786 ;; This function uses a non-reentrant model
+   787 ;;
+   788  073B                     _InitI2C:	
+   789                           
+   790                           ;I2C.c: 9: TRISA4 = 1;
+   791                           
+   792                           ; Regs used in _InitI2C: []
+   793  073B  1683               	bsf	3,5	;RP0=1, select bank1
+   794  073C  1605               	bsf	5,4
+   795                           
+   796                           ;I2C.c: 10: TRISB0 = 1;
+   797  073D  1406               	bsf	6,0
+   798                           
+   799                           ;I2C.c: 13: RA4 = 0;
+   800  073E  1283               	bcf	3,5	;RP0=0, select bank0
+   801  073F  1205               	bcf	5,4
+   802                           
+   803                           ;I2C.c: 14: RB0 = 0;
+   804  0740  1006               	bcf	6,0
+   805  0741  0008               	return
+   806  0742                     __end_of_InitI2C:	
+   807                           
+   808                           	psect	text87
+   809  0000                     __ptext87:	
+   810 ;; =============== function _InitI2C ends ============
+   811                           
+   812  007E                     btemp	set	126	;btemp
+   813  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Thu Mar 20 18:13:25 2014
+
+     __size_of_I2C_Start 0011                       u14 07D3                       u15 07D1  
+                     u44 07B2                       u45 07B0                       u67 079C  
+                     u77 07A3                       u87 07B9                       u97 07CA  
+                    l401 0000                      l404 0796                      l406 0000  
+                    l382 0000                      l391 0000                      l379 0000  
+                    l388 0000                      l397 07C5                      l399 07DC  
+                    l796 0749                      _RB0 0030                      _RA4 002C  
+                    u107 07E1                      u117 07E9                      u207 0790  
+                    u127 07F6                      u217 0751                      u137 07FD  
+                    u227 0758                      u147 0760                      u157 0768  
+                    u167 0770                      u177 0778                      u187 0780  
+                    u197 0788       I2C_Write_Byte@Byte 0071                     l1601 0000  
+                   l1603 0000                     l1611 0000                     l1605 0000  
+                   l1607 0000                     l1631 0000                     l1623 07DF  
+                   l1609 0000                     l1633 0000                     l1625 0000  
+                   l1617 0000                     l1635 0000                     l1627 0000  
+                   l1619 0000                     l1651 0000                     l1629 0000  
+                   l1653 0000                     l1645 0000                     l1661 0000  
+                   l1591 0000                     l1647 0000                     l1639 0000  
+                   l1663 0000                     l1585 0000                     l1593 0000  
+                   l1649 0000                     l1665 0000                     l1587 0000  
+                   l1595 0000                     l1667 0000                     l1659 0000  
+                   l1589 0000                     l1597 0000                     l1669 0000  
+                   l1599 0000                     _main 0742                     btemp 007E  
+       __end_of_I2C_Stop 0794    __size_of_I2C_Send_ACK 0018                     start 0000  
+        __end_of_InitI2C 0742                    ?_main 0070   __size_of_I2C_Read_Byte 002F  
+           _I2C_Send_ACK 075B        __end_of_I2C_Start 075B                    status 0003  
+                  wtemp0 007E             __end_of_main 074A                   ??_main 0073  
+                 _TRISB0 0430                   _TRISA4 042C                ??_InitI2C 0070  
+          _I2C_Read_Byte 0794                ?_I2C_Stop 0070          I2C_Write_Byte@i 0072  
+         ?_I2C_Read_Byte 0070           __pcstackCOMMON 0070               ??_I2C_Stop 0070  
+             __pmaintext 0742  __size_of_I2C_Write_Byte 003D           I2C_Read_Byte@i 0072  
+    I2C_Read_Byte@RxData 0071                  _InitI2C 073B                _I2C_Start 074A  
+        ??_I2C_Read_Byte 0070     end_of_initialization 0739               ?_I2C_Start 0070  
+      __size_of_I2C_Stop 0021           _I2C_Write_Byte 07C3      start_initialization 0739  
+            ??_I2C_Start 0070   __end_of_I2C_Write_Byte 0800            ?_I2C_Send_ACK 0070  
+               ?_InitI2C 0070          ?_I2C_Write_Byte 0070                 _I2C_Stop 0773  
+         ??_I2C_Send_ACK 0070    __end_of_I2C_Read_Byte 07C3         __size_of_InitI2C 0007  
+               __ptext80 0000                 __ptext81 0794                 __ptext82 07C3  
+               __ptext83 075B                 __ptext84 0773                 __ptext85 074A  
+               __ptext86 073B                 __ptext87 0000            __size_of_main 0008  
+   __end_of_I2C_Send_ACK 0773         ??_I2C_Write_Byte 0070  
