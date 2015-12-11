@@ -1,0 +1,193 @@
+Version 3.2 HI-TECH Software Intermediate Code
+[p mainexit ]
+"2687 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[v _TRISB0 `Vb ~T0 @X0 0 e@1072 ]
+"2689
+[v _TRISB1 `Vb ~T0 @X0 0 e@1073 ]
+"2513
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
+"2515
+[v _RB1 `Vb ~T0 @X0 0 e@49 ]
+[v F1091 `(v ~T0 @X0 1 tf1`ul ]
+"150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
+[v __delay `JF1091 ~T0 @X0 0 e ]
+[p i __delay ]
+"51 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f877a.h
+[; <" INDF equ 00h ;# ">
+"57
+[; <" TMR0 equ 01h ;# ">
+"63
+[; <" PCL equ 02h ;# ">
+"69
+[; <" STATUS equ 03h ;# ">
+"156
+[; <" FSR equ 04h ;# ">
+"162
+[; <" PORTA equ 05h ;# ">
+"211
+[; <" PORTB equ 06h ;# ">
+"272
+[; <" PORTC equ 07h ;# ">
+"333
+[; <" PORTD equ 08h ;# ">
+"394
+[; <" PORTE equ 09h ;# ">
+"425
+[; <" PCLATH equ 0Ah ;# ">
+"444
+[; <" INTCON equ 0Bh ;# ">
+"521
+[; <" PIR1 equ 0Ch ;# ">
+"582
+[; <" PIR2 equ 0Dh ;# ">
+"621
+[; <" TMR1 equ 0Eh ;# ">
+"627
+[; <" TMR1L equ 0Eh ;# ">
+"633
+[; <" TMR1H equ 0Fh ;# ">
+"639
+[; <" T1CON equ 010h ;# ">
+"713
+[; <" TMR2 equ 011h ;# ">
+"719
+[; <" T2CON equ 012h ;# ">
+"789
+[; <" SSPBUF equ 013h ;# ">
+"795
+[; <" SSPCON equ 014h ;# ">
+"864
+[; <" CCPR1 equ 015h ;# ">
+"870
+[; <" CCPR1L equ 015h ;# ">
+"876
+[; <" CCPR1H equ 016h ;# ">
+"882
+[; <" CCP1CON equ 017h ;# ">
+"939
+[; <" RCSTA equ 018h ;# ">
+"1033
+[; <" TXREG equ 019h ;# ">
+"1039
+[; <" RCREG equ 01Ah ;# ">
+"1045
+[; <" CCPR2 equ 01Bh ;# ">
+"1051
+[; <" CCPR2L equ 01Bh ;# ">
+"1057
+[; <" CCPR2H equ 01Ch ;# ">
+"1063
+[; <" CCP2CON equ 01Dh ;# ">
+"1120
+[; <" ADRESH equ 01Eh ;# ">
+"1126
+[; <" ADCON0 equ 01Fh ;# ">
+"1221
+[; <" OPTION_REG equ 081h ;# ">
+"1290
+[; <" TRISA equ 085h ;# ">
+"1339
+[; <" TRISB equ 086h ;# ">
+"1400
+[; <" TRISC equ 087h ;# ">
+"1461
+[; <" TRISD equ 088h ;# ">
+"1522
+[; <" TRISE equ 089h ;# ">
+"1578
+[; <" PIE1 equ 08Ch ;# ">
+"1639
+[; <" PIE2 equ 08Dh ;# ">
+"1678
+[; <" PCON equ 08Eh ;# ">
+"1711
+[; <" SSPCON2 equ 091h ;# ">
+"1772
+[; <" PR2 equ 092h ;# ">
+"1778
+[; <" SSPADD equ 093h ;# ">
+"1784
+[; <" SSPSTAT equ 094h ;# ">
+"1952
+[; <" TXSTA equ 098h ;# ">
+"2032
+[; <" SPBRG equ 099h ;# ">
+"2038
+[; <" CMCON equ 09Ch ;# ">
+"2107
+[; <" CVRCON equ 09Dh ;# ">
+"2171
+[; <" ADRESL equ 09Eh ;# ">
+"2177
+[; <" ADCON1 equ 09Fh ;# ">
+"2235
+[; <" EEDATA equ 010Ch ;# ">
+"2241
+[; <" EEADR equ 010Dh ;# ">
+"2247
+[; <" EEDATH equ 010Eh ;# ">
+"2253
+[; <" EEADRH equ 010Fh ;# ">
+"2259
+[; <" EECON1 equ 018Ch ;# ">
+"2303
+[; <" EECON2 equ 018Dh ;# ">
+"17 ../main.c
+[p x FOSC=HS ]
+"18
+[p x WDTE=OFF ]
+"19
+[p x PWRTE=OFF ]
+"20
+[p x BOREN=ON ]
+"21
+[p x LVP=OFF ]
+"22
+[p x CPD=OFF ]
+"23
+[p x WRT=OFF ]
+"24
+[p x CP=OFF ]
+"27
+[v _main `(i ~T0 @X0 1 ef ]
+"28
+{
+[e :U _main ]
+[f ]
+"29
+[e = _TRISB0 -> -> 0 `i `b ]
+"30
+[e = _TRISB1 -> -> 1 `i `b ]
+"32
+[e = _RB0 -> -> 0 `i `b ]
+"34
+[e :U 98 ]
+"35
+{
+"36
+[e $ ! == -> _RB1 `i -> 0 `i 100  ]
+"37
+{
+"38
+[e = _RB0 -> -> 1 `i `b ]
+"39
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"40
+[e = _RB0 -> -> 0 `i `b ]
+"41
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"42
+}
+[e :U 100 ]
+"43
+}
+[e :U 97 ]
+"34
+[e $U 98  ]
+[e :U 99 ]
+"44
+[e ) -> 0 `i ]
+[e $UE 96  ]
+"45
+[e :UE 96 ]
+}
